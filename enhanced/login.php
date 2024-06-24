@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Redirect based on role
         if ($user['role'] == 'admin') {
-            header("Location: userDetailsPage.php");
+            header("Location: qr_otp.php");
         } else {
             header("Location: userPage.php");
         }
