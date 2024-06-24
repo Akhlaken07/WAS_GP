@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "wasenhance";
+$password = "wasadmin123";
 $dbname = "healthywebsite";
 
 // Create connection

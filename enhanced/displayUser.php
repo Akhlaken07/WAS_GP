@@ -12,14 +12,13 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<tr>';
         echo '<td>'.htmlspecialchars($row["name"]).'</td>';
-        // echo '<td>'.htmlspecialchars($row["matricNo"]).'</td>';
-        // echo '<td>'.htmlspecialchars($row["currentAddress"]).'</td>';
+       
         echo '<td>'.htmlspecialchars($row["email"]).'</td>';   
         echo '<td>'.htmlspecialchars($row["height"]).'</td>';
         echo '<td>'.htmlspecialchars($row["weight"]).'</td>';
         echo '<td>'.htmlspecialchars($row["homeAddress"]).'</td>';
         echo '<td>'.htmlspecialchars($row["countryCodeMobile"].$row["mobilePhone"]).'</td>';
-        // echo '<td>'.htmlspecialchars($row["countryCodeHome"].$row["homePhone"]).'</td>';    
+       
         
         echo "<td>
                         <form action='editUserPage.php' method='post'>

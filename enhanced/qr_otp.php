@@ -8,10 +8,10 @@ if (isset($_POST['otp-submit'])){
     $g = new \Sonata\GoogleAuthenticator\GoogleAuthenticator();
     
     if ($g->checkCode($secret, $code)) {
-        header("Location: database_feedback.php"); 
+        header("Location: userDetailsPage.php"); 
         exit();
     } else {
-        echo "NO \n";
+        echo "Incorrect OTP Code \n";
     }   
 }
 ?>

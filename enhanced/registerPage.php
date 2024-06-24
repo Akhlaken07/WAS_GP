@@ -38,14 +38,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                         <label for="weight">Weight (kg):</label>
                         <input type="number" id="weight" name="weight" min="0" class="form-control">
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="matricNo">Matric No:</label>
-                        <input type="text" id="matricNo" name="matricNo" pattern="\d{5,10}" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="currentAddress">Current Address:</label>
-                        <input type="text" id="currentAddress" name="currentAddress" class="form-control">
-                    </div> -->
+                  
                     <div class="form-group">
                         <label for="homeAddress">Home Address:</label>
                         <input type="text" id="homeAddress" name="homeAddress" class="form-control">
@@ -62,18 +55,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="countryCodeHome">Home Phone No (Emergency):</label>
-                        <div class="row">
-                            <div class="col-3">
-                                <input type="text" id="countryCodeHome" name="countryCodeHome" placeholder="Country Code" pattern="\+\d{1,3}" class="form-control">
-                            </div>
-                            <p class="mt-1">-</p>
-                            <div class="col">
-                                <input type="text" id="homePhone" name="homePhone" pattern="\d{9,12}" class="form-control">
-                            </div>
-                        </div>
-                    </div> -->
+                   
 
                     <input type="submit" value="Register" class="btn btn-primary">
                     <p class="mt-3">Already have an account? <a href="loginPage.php" style="margin-left: 10px;">Log in</a></p>

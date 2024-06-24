@@ -69,10 +69,6 @@ if (!preg_match("/^[A-Za-z\s]+$/", $name)) {
     die("Invalid name");
 }
 
-// $matricNo = $_POST['matricNo'];
-// if (!preg_match("/^\d{5,10}$/", $matricNo)) {
-//     die("Invalid matric number");
-// }
 
 $email = $_POST['email'];
 if (!preg_match("/^.+@gmail.com$/", $email)) {
@@ -88,16 +84,6 @@ $mobilePhone = $_POST['mobilePhone'];
 if (!preg_match("/^\d{9,15}$/", $mobilePhone)) {
     die("Invalid mobile phone number");
 }
-
-// $countryCodeHome = $_POST['countryCodeHome'];
-// if (!preg_match("/^\+\d{1,3}$/", $countryCodeHome)) {
-//     die("Invalid home country code");
-// }
-
-// $homePhone = $_POST['homePhone'];
-// if (!preg_match("/^\d{9,15}$/", $homePhone)) {
-//     die("Invalid home phone number");
-// }
 
 
 

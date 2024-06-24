@@ -22,7 +22,7 @@ $mobilePhone = $_POST['mobilePhone'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
 
-    // Prepare a SQL statement to update the student
+    // Prepare a SQL statement to update the Userdetails table
     $sql = 'UPDATE userdetails SET name = ?, email = ?, height = ?, weight = ?, homeAddress = ?, countryCodeMobile = ?, mobilePhone = ? WHERE email = ?';
     
     $stmt = $conn->prepare($sql);
@@ -34,7 +34,7 @@ $weight = $_POST['weight'];
         } else {
             header("Location: userPage.php");
         }
-        // header("Location: studentDetailsPage.php?message=Record updated successfully");
+       
         exit;
     }
      else {
