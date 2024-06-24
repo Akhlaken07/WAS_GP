@@ -1,14 +1,23 @@
 <title>Feedback Table</title>
 <style>
-    .centered {
-        margin: auto;
-        width: 50%;
-        padding: 10px;
-        text-align: center; /* Center the content inside the div */
+    body {
+        font-family: Arial, sans-serif;
     }
     table {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #f5f5f5;
     }
 </style>
 </head>
@@ -41,7 +50,6 @@
             echo "No results found.";
         }
         ?>
-        <!-- Logout Button -->
-        <button onclick="window.location.href='login.php';">Logout</button>
+
     </div>
 </body>

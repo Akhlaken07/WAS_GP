@@ -47,7 +47,12 @@ header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapc
                     </script>
                 </div>
             </div>
+            
         <?php endif; ?>
     </div>
+    <?php
+    include "database_feedback.php"
+    ?>
+    
 </body>
 </html>
