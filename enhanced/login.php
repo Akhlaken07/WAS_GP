@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user['role'] == 'admin') {
             header("Location: qr_otp.php");
         } else {
-            header("Location: userPage.php");
+            header("Location: userHomepage.php");
         }
         exit;
     } else {
