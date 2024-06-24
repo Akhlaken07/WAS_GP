@@ -41,7 +41,9 @@ $conn->close();
         <a class="nav-link" href="healthy-food.html" title="Healthy Food">Healthy Food</a>
         <a class="nav-link" href="contact.html" title="Contact">Contact</a>
         <a class="nav-link" href="about-your-body.html" title="About Your Body">About Your Body</a>
-        <a class="nav-link" href="login.php" title="Admin Login" style=" right: 0; transform: translateY(-50%);">Admin Login</a>
+        <a class="nav-link-admin" href="loginPage.php" title="Admin Login">Login</a>
+				<a class="nav-link-admin">|</a>
+				<a class="nav-link-admin" href="registerPage.php" title="Register">Register</a>
       </nav>
     </header>
 
@@ -72,8 +74,6 @@ $conn->close();
     <input type="text" id="phone" name="phone" required><br>
     <label for="myaddress">Address: </label>
     <input type="text" id="address" name="address" required><br>
-    <label for="mysubject">Subject: </label>
-    <input type="text" id="subject" name="subject" required><br>
     <label for="mymessage">Message: </label>
     <input type="texts" id="message" name="message" required><br>
     <button type="submit">Submit</button>
