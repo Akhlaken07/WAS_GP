@@ -32,7 +32,14 @@ Healthy Eating Website which promote healthy lifestyle that have been implement 
       | No login.php   | Added a login page where username and password need to be enter |
       |   | After username and password has been entered, admin need to scan a QR code with OTP number to access the database  |
       |   | XSS prevention with REGEX   |
-
+      
+2. For Authorization, it will show the different when a user and admin login
+    - ### Authorization [Azhad]
+      | Original  | Enhanced |
+      | ------------- | ------------- |
+      | No user and admin   | Added a admin role where they can see the feedback and users data  |
+      |   | Added users role where they can see their profile and bmi calculation  |
+      |   | XSS prevention with REGEX   |
    
 
 ## References
