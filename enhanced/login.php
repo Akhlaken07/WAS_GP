@@ -1,5 +1,4 @@
 <?php
-session_start();
 if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
     // CSRF token does not match, reject the form submission
     die('Invalid CSRF token');
@@ -11,8 +10,18 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate email with provided regex
     $email = $_POST["email"];
+    if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+        echo "<script type='text/javascript'>alert('Invalid email format'); window.location.href = 'loginPage.php';</script>";
+        exit;
+    }
+
     $password = $_POST["password"];
+    if (!preg_match("/^[a-zA-Z0-9!@#$%^&*]{6,}$/", $password)) {
+        echo "<script type='text/javascript'>alert('Password must contain at least one letter, at least one number, and be at least 6 characters long'); window.location.href = 'loginPage.php';</script>";
+        exit;
+    }
 
     $sql = "SELECT id, password, role FROM Users WHERE email = ?";
     $stmt = $conn->prepare($sql);
@@ -35,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         exit;
     } else {
-       
         echo "<script type='text/javascript'>alert('Invalid email or password'); window.location.href = 'loginPage.php';</script>";
     }
 }

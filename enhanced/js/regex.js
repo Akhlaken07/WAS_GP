@@ -10,10 +10,8 @@ function validateForm() {
     var email = document.getElementById('mail').value;
     var phone = document.getElementById('phone').value;
     var address = document.getElementById('address').value;
-    var subject = document.getElementById('subject').value;
   
     // Sanitize the inputs
-    var sanitizedSubject = encodeURI(subject);
     var sanitizedName = encodeURI(name);
     var sanitizedEmail = encodeURI(email);
     var sanitizedPhone = encodeURI(phone);
@@ -38,6 +36,6 @@ function validateForm() {
     }
   
     // If all validations pass, show the success message
-    alert("Form has successfully submitted with subject: " + sanitizedSubject);
+    alert("Form has successfully submitted with subject: ");
     return true;
 }
