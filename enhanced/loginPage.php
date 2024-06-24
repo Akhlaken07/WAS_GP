@@ -34,11 +34,9 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
                     <input type="submit" value="Login" class="btn btn-primary">
+                    <p class="mt-3">Don't have an account? <a href="registerPage.php" style="margin-left: 10px;">Register Here</a></p>
                 </form>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            Don't have an account? <a href="registerPage.php" style="margin-left: 10px;">Register here</a>
         </div>
     </div>
 </body>
