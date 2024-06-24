@@ -1,7 +1,6 @@
 // validation.js
 var validationRules = {
     name: /^[A-Za-z\s]+$/,
-    matricNo: /^\d{5,10}$/,
     email: /^.+@gmail.com$/,
     countryCode: /^\+\d{1,3}$/,
     phoneNo: /^\d{9,15}$/
@@ -14,11 +13,7 @@ function validateForm() {
         return false;
     }
 
-    var matricNo = document.getElementById('matricNo').value;
-    if (!validationRules.matricNo.test(matricNo)) {
-        alert('Invalid matric number');
-        return false;
-    }
+    
 
     var email = document.getElementById('email').value;
     if (!validationRules.email.test(email)) {
@@ -38,17 +33,6 @@ function validateForm() {
         return false;
     }
 
-    var countryCodeHome = document.getElementById('countryCodeHome').value;
-    if (!validationRules.countryCode.test(countryCodeHome)) {
-        alert('Invalid home country code');
-        return false;
-    }
-
-    var homePhone = document.getElementById('homePhone').value;
-    if (!validationRules.phoneNo.test(homePhone)) {
-        alert('Invalid home phone number');
-        return false;
-    }
 
     // If all validations pass
     return true;

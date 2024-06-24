@@ -4,7 +4,7 @@ require 'db_connect.php';
 
 $email = $_POST['email'];
 
-// Prepare a SQL statement to delete the student from Userdetails table
+// Prepare a SQL statement to delete the User from Userdetails table
 $sql = "DELETE FROM Userdetails WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $email);

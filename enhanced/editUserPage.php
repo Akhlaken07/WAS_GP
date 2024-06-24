@@ -35,14 +35,7 @@ $data = $result->fetch_assoc();
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" pattern="[A-Za-z\s]+" value="<?php echo $data['name']; ?>">
             </div>
-            <!-- <div class="form-group">
-                <label for="matricNo">Matric No:</label>
-                <input type="text" class="form-control" id="matricNo" name="matricNo" pattern="\d{5,10}" value="<?php echo $data['matricNo']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="currentAddress">Current Address:</label>
-                <input type="text" class="form-control" id="currentAddress" name="currentAddress" value="<?php echo $data['currentAddress']; ?>">
-            </div> -->
+           
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" pattern=".+@gmail.com" title="Please enter a Gmail account" value="<?php echo $data['email']; ?>"readonly>
@@ -70,16 +63,7 @@ $data = $result->fetch_assoc();
                     <input type="text" class="form-control" id="mobilePhone" name="mobilePhone" pattern="\d{9,12}" value="<?php echo $data['mobilePhone']; ?>">
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label for="homePhone">Home Phone No (Emergency):</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="countryCodeHome" name="countryCodeHome" placeholder="Country Code" pattern="\+\d{1,3}" value="<?php echo $data['countryCodeHome']; ?>">
-                    <div class="input-group-append">
-                        <span class="input-group-text">-</span>
-                    </div>
-                    <input type="text" class="form-control" id="homePhone" name="homePhone" pattern="\d{9,12}" value="<?php echo $data['homePhone']; ?>">
-                </div>
-            </div> -->
+          
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
