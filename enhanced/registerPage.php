@@ -16,8 +16,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     <div class="container h-100">
         
             <div class="row justify-content-center">
-                  <script src="js/validation.js"></script>
-                <form action="register.php" method="post" onsubmit="return validateForm()" class="col-4">
+                <form action="register.php" method="post" onsubmit="return validateForm1()" class="col-4">
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <div class="form-group mt-3">
                         <label for="email">Email:</label>
@@ -60,11 +59,13 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
                     <input type="submit" value="Register" class="btn btn-primary">
                     <p class="mt-3">Already have an account? <a href="loginPage.php" style="margin-left: 10px;">Log in</a></p>
+                  
                 </form>
              
                 
             </div>
         
     </div>
+    <script src="js/registerregex.js"></script>
 </body>
 </html>

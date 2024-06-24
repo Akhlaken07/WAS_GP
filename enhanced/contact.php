@@ -4,19 +4,44 @@ if ($conn->connect_error) {
     die('Connection Failed : ' . $conn->connect_error);
 }
 
-// Check if form data is submitted and all expected fields are filled
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'], $_POST['mail'], $_POST['phone'], $_POST['address'], $_POST['message']) && !empty($_POST['name']) && !empty($_POST['mail']) && !empty($_POST['phone']) && !empty($_POST['address']) && !empty($_POST['message'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'], $_POST['mail'], $_POST['phone'], $_POST['address'], $_POST['message'])) {
+    
+    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $mail = filter_var($_POST['mail'], FILTER_SANITIZE_EMAIL);
+    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
+    $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+
+    // Validate input
+    $nameRegex = "/^[a-zA-Z\s]+$/";
+    $emailRegex = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/";
+    $phoneRegex = "/^[0-9]{10,15}$/";
+    $addressRegex = "/^[a-zA-Z0-9\s,.'-]{3,}$/";
+    $messageRegex = "/^[\w\s,.!?-]{5,}$/"; // Simple regex for demonstration
+
+    if (!preg_match($nameRegex, $name)) {
+        die('Invalid name format');
+    }
+    if (!preg_match($emailRegex, $mail)) {
+        die('Invalid email format');
+    }
+    if (!preg_match($phoneRegex, $phone)) {
+        die('Invalid phone number format');
+    }
+    if (!preg_match($addressRegex, $address)) {
+        die('Invalid address format');
+    }
+    if (!preg_match($messageRegex, $message)) {
+        die('Invalid message format');
+    }
+
     // Prepare and bind
     $stmt = $conn->prepare("INSERT INTO feedback (name, mail, phone, address, message) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $name, $mail, $phone, $address, $message);
 
-    // Set parameters and execute
-    $name = $_POST['name'];
-    $mail = $_POST['mail'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    $message = $_POST['message'];
+    // Execute
     $stmt->execute();
+    echo "Message submitted successfully";
     $stmt->close();
 }
 $conn->close();
@@ -65,19 +90,19 @@ $conn->close();
 <div class="form">
 <div class="transbox">
 
-  <form id="myForm" onsubmit="alert('Message has been submitted.');return validateForm()" method="post">
+  <form id="myForm" onsubmit="return validateForm()" method="post">
     <label for="myname">Name: </label>
-    <input type="text" id="name" name="name" required><br>
+    <input type="text" id="name" name="name" pattern="^[a-zA-Z\s]+$" required><br>
     <label for="myemail">Email: </label>
-    <input type="text" id="mail" name="mail" required><br>
+    <input type="text" id="mail" name="mail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required><br>
     <label for="myphone">Phone No: </label>
-    <input type="text" id="phone" name="phone" required><br>
+    <input type="text" id="phone" name="phone" pattern="^[0-9]{10,15}$" required><br>
     <label for="myaddress">Address: </label>
-    <input type="text" id="address" name="address" required><br>
+    <input type="text" id="address" name="address" pattern="^[a-zA-Z0-9\s,.'-]{3,}$" required><br>
     <label for="mymessage">Message: </label>
-    <input type="texts" id="message" name="message" required><br>
+    <input type="text" id="message" name="message" pattern="^[\w\s,.!?-]{5,}$" required><br>
     <button type="submit">Submit</button>
-    <script src="regex.js"></script>
+  
   </form>
 
 </div>

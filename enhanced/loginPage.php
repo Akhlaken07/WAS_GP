@@ -23,15 +23,15 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-4">
                 <h1 class="text-center mb-4">Login</h1>
-                <form action="login.php" method="post">
+                <form action="login.php"  method="post" onsubmit="return validateLoginForm()">
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <div class="form-group mt-3">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
+                        <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" required>
+                        <input type="password" id="password" name="password" pattern="^[a-zA-Z0-9!@#$%^&*]{6,}$" class="form-control" required>
                     </div>
                     <input type="submit" value="Login" class="btn btn-primary">
                     <p class="mt-3">Don't have an account? <a href="registerPage.php" style="margin-left: 10px;">Register Here</a></p>
@@ -39,5 +39,6 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
             </div>
         </div>
     </div>
+    <script src="js/loginregex.js"></script>
 </body>
 </html>
