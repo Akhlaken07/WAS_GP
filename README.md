@@ -12,32 +12,26 @@ AWASP
 Healthy Eating
 
 ## Introduction
-Website to introduce on healthy eating which have been improve with web application security
+Healthy Eating Website which promote healthy lifestyle that have been implement a security in multiple area. 
 
 
 ## Objectives
-1. To authenticate and authorize valid user that can place their order through the website.
-2. To prevent unauthorize access by implementing session management.
-3. To implement Regex and input validation to prevent SQL injection and XSS in the text box especially in the login and register page.
-4. File directory cannot be accessed by unauthorize user since it has been disabled.
-5. To prevent CSRF by implementing Anti-CSRF token and secure session management.
-6. To create a safer environment for the user to access and use the website.
+1. To secure the database of users with proper authentication and authorization
+2. Preventing Cross Site Scripting and Cross Site Forgery with proper implementation
+3. Implementing REGEX and Sanitization 
+4. ??
+5. ??
+6. ??
       
 ## Web Application Security Enhancements
 
-1. Added user authorisation pages which are register.php and login.php and auth.php
-    - ### [register.php](Enhanced/register.php) [hani]
+1. For Authentication, a login with two factor authentication have been added before admin can access the database
+    - ### Authentication [Azhad]
       | Original  | Enhanced |
       | ------------- | ------------- |
-      | Register.php has not been developed yet  | Add input validation using Regex and create error message in line 1 - 82 in the code  |
-      |   | XSS prevention in line 1 - 82 in the code  |
-      |   | Connect with the database in line 106 in the code  |
-      |   | SQL injection prevention in line 105 - 130 in the code  |
-      |   | Create registration form and include validate early in line 152 - 179 in the code   |
-      |   | Display error message in line 157 , 161, 165, 169 and 173 in the code   |
-      |   | Improving on the CSP in line 181 & 182 in the code  |
-      |   | In line 190 - 193 in the code, if there is no error, then, the user is registered  |
-      |   | Data redundancy prevention in line 194 - 199 in the code  |
+      | No login.php   | Added a login page where username and password need to be enter |
+      |   | After username and password has been entered, admin need to scan a QR code with OTP number to access the database  |
+      |   | XSS prevention with REGEX   |
 
 
     - ### [login.php](Enhanced/login.php) [syamira]
