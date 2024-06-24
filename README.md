@@ -1,5 +1,4 @@
-# webappsec-enhance
-Web Application Security Final Assessment Group Project
+# Web Application Security Final Assessment Group Project
 
 ## Group Name
 AWASP
