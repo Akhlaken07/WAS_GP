@@ -11,7 +11,7 @@ if (isset($_POST['otp-submit'])){
         header("Location: userDetailsPage.php"); 
         exit();
     } else {
-        echo "NO \n";
+        echo "Incorrect OTP Code \n";
     }   
 }
 ?>
