@@ -69,18 +69,45 @@ if (!$user) {
 $conn->close();
 ?>
 <div class="container">
-    back to <a href="userHomepage.php">Home</a>
+     
+     <div class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="userHomepage.php">Healthy Eating</a>
+            
+        </nav>
+    </div>
         <div class="py-5 text-center">
-            <h2>Welcome,  <?php echo $_SESSION['useremail']; echo "<br>session_id(): ".session_id();?>!</h2>
+        <button id="toggleButton" class="btn btn-secondary">Show Email and Session ID</button>
+				<div id="emailSessionInfo" style="display: none;">
+				    <h2>Email: <?php echo $_SESSION['useremail']; echo "<br>Session ID: ".session_id();?>!</h2>
+				</div>
+				<script>
+				    document.addEventListener('DOMContentLoaded', function() {
+				        var infoDiv = document.getElementById('emailSessionInfo');
+				        infoDiv.style.display = 'none';
+				    });
+
+				    document.getElementById('toggleButton').addEventListener('click', function() {
+				        var infoDiv = document.getElementById('emailSessionInfo');
+				        if (infoDiv.style.display === 'none') {
+				            infoDiv.style.display = 'block';
+				            this.textContent = 'Hide Email and Session ID';
+				        } else {
+				            infoDiv.style.display = 'none';
+				            this.textContent = 'Show Email and Session ID';
+				        }
+				    });
+				</script>
+            <!-- <h2>Welcome,  <?php echo $_SESSION['useremail']; echo "<br>session_id(): ".session_id();?>!</h2>
             <form action="logout.php" method="post" class="logout-button">
                 <input type="submit" value="Logout" class="btn btn-primary">
-            </form>
+            </form> -->
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <h4 class="mb-3">User Details</h4>
-                <form action="userPage.php" method="post" class="needs-validation" novalidate>
+                <form action="userPage.php" method="post" onsubmit="return validateForm1()" class="needs-validation" novalidate>
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <input type="hidden" name="email" value="<?php echo $data['email']; ?>">
                     <div class="row">

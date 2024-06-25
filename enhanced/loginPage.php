@@ -15,6 +15,42 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            background-color: #343a40; /* Dark grey background */
+        }
+        .container {
+            background-color: #343a40; /* Dark grey background */
+            color: #ffc107; /* Yellow text */
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .btn-primary {
+            background-color: #ffc107; /* Yellow button */
+            border-color: #ffc107;
+            color: #343a40; /* Dark grey text */
+        }
+        .btn-primary:hover {
+            background-color: #e0a800; /* Darker yellow on hover */
+            border-color: #e0a800;
+        }
+        .form-control {
+            background-color: #495057; /* Dark grey input background */
+            color: #ffc107; /* Yellow input text */
+            border: 1px solid #ffc107; /* Yellow border */
+        }
+        .form-control:focus {
+            background-color: #495057;
+            color: #ffc107;
+            border-color: #e0a800; /* Darker yellow on focus */
+            box-shadow: none;
+        }
+        .form-group label {
+            color: #ffc107; /* Yellow label text */
+        }
+        a {
+            color: #ffc107; /* Yellow link */
+        }
+        a:hover {
+            color: #e0a800; /* Darker yellow on hover */
         }
     </style>
 </head>
@@ -23,7 +59,7 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-4">
                 <h1 class="text-center mb-4">Login</h1>
-                <form action="login.php"  method="post" onsubmit="return validateLoginForm()">
+                <form action="login.php" method="post" onsubmit="return validateLoginForm()">
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <div class="form-group mt-3">
                         <label for="email">Email:</label>
