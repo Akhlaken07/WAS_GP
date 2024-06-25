@@ -1,6 +1,7 @@
 <?php
 session_start();
-header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com");
+header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://ka-f.fontawesome.com ");
+
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 ?>
 
