@@ -1,352 +1,250 @@
 <!DOCTYPE html>
-<html lang="en"><!-- Basic -->
-
-<?php
-require 'sessionCheck.php';
-header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com; script-src 'self' 'unsafe-inline'");
-?>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-     <!-- Site Metas -->
     <title>Healthy Food</title>
-
-
-    <!-- Site Icons -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Site CSS -->
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/style1.css">
-    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet" href="css/responsive.css">
-
     <style>
-        .nav-right {
-            float: right;
-			color: white;
+        body {
+            background-color: #f0f0f0; /* Light grey background */
+            color: #333; /* Dark grey text */
         }
-		.top-navbar .navbar .nav-link, .top-navbar .navbar .nav-link-admin {
-			color: white;
-		}
-		
-		.top-left-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .logout-button {
-        display: inline;
-    }
-    .welcome-message {
-        position: relative;
-    }
+        .navbar {
+            background-color: #333; /* Dark grey navbar */
+        }
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: #ffcc00; /* Yellow text for links and brand */
+        }
+        .btn-secondary {
+            background-color: #ffcc00; /* Yellow button */
+            border-color: #ffcc00;
+            color: #333; /* Dark grey text on button */
+        }
+        .btn-secondary:hover {
+            background-color: #e6b800; /* Darker yellow on hover */
+            border-color: #e6b800;
+        }
+        .welcome-message {
+            color: #ffcc00; /* Yellow welcome message */
+        }
+        h2 {
+            color: #333; /* Dark grey for headings */
+        }
+        p {
+            color: #666; /* Medium grey for paragraphs */
+        }
+        .container {
+            background-color: #fff; /* White background for container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
-<?php
-// Check if the user is logged in
-if (!isset($_SESSION['useremail'])) {
-    die('You are not logged in');
-}
-?>
 
 <body>
-<div class="welcome-message">
-    <h2>Welcome, <?php echo htmlspecialchars($_SESSION['useremail']); ?><br>session_id(): <?php echo session_id(); ?>!</h2>
-    <div class="top-left-container">
-        <a href="userPage.php" class="btn btn-link">Profile</a>
-        <form action="logout.php" method="post" class="logout-button">
-            <input type="submit" value="Logout" class="btn btn-primary">
-        </form>
+    <?php
+    require 'sessionCheck.php';
+    require 'db_connect.php';
+
+    // Check if the user is logged in
+    if (!isset($_SESSION['useremail'])) {
+        die('You are not logged in');
+    }
+
+    // Set Content Security Policy
+    header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com; script-src 'self' 'unsafe-inline'");
+
+    // Get the user's details from the database
+    $sql = "SELECT name, height, weight, homeAddress, email, countryCodeMobile, mobilePhone FROM Userdetails WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $_SESSION['useremail']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if (!$user) {
+        die('User not found');
+    }
+
+    // Calculate BMI
+    $bmi = $user['weight'] / (($user['height'] / 100) * ($user['height'] / 100));
+
+    // Determine BMI category
+    function getBMICategory($bmi) {
+        if ($bmi < 18.5) {
+            return "Underweight";
+        } elseif ($bmi < 24.9) {
+            return "Normal weight";
+        } elseif ($bmi < 29.9) {
+            return "Overweight";
+        } else {
+            return "Obesity";
+        }
+    }
+
+    $bmiCategory = getBMICategory($bmi);
+
+    // Recommended next steps based on BMI category
+    function getNextSteps($bmiCategory) {
+        switch ($bmiCategory) {
+            case "Underweight":
+                return "Consider a balanced diet with more calories and consult a healthcare provider.";
+            case "Normal weight":
+                return "Maintain your current lifestyle and keep up with regular exercise.";
+            case "Overweight":
+                return "Consider a balanced diet with fewer calories and increase physical activity.";
+            case "Obesity":
+                return "Consult a healthcare provider for a personalized weight loss plan.";
+        }
+    }
+
+    $nextSteps = getNextSteps($bmiCategory);
+
+    // Additional information about BMI categories
+    function getBMICategoryInfo($bmiCategory) {
+        switch ($bmiCategory) {
+            case "Underweight":
+                return "Being underweight can lead to health issues such as weakened immune system, fragile bones, and fatigue. It's important to eat a nutrient-rich diet and consult with a healthcare provider.";
+            case "Normal weight":
+                return "Maintaining a normal weight is associated with a lower risk of chronic diseases. Continue with a balanced diet and regular physical activity to stay healthy.";
+            case "Overweight":
+                return "Being overweight can increase the risk of cardiovascular diseases, diabetes, and other health issues. Consider a balanced diet and regular exercise to manage your weight.";
+            case "Obesity":
+                return "Obesity is linked to a higher risk of serious health conditions such as heart disease, diabetes, and certain cancers. It's important to seek medical advice for a comprehensive weight management plan.";
+        }
+    }
+
+    $bmiCategoryInfo = getBMICategoryInfo($bmiCategory);
+
+    // Personalized diet recommendations
+    function getDietRecommendations($bmiCategory) {
+        switch ($bmiCategory) {
+            case "Underweight":
+                return "Include more calorie-dense foods like nuts, dried fruits, and whole grains. Ensure a balanced intake of proteins, fats, and carbohydrates.";
+            case "Normal weight":
+                return "Maintain a balanced diet with a variety of foods from all food groups. Focus on whole foods and avoid processed foods.";
+            case "Overweight":
+                return "Opt for a diet rich in fruits, vegetables, lean proteins, and whole grains. Reduce intake of sugary drinks and high-calorie snacks.";
+            case "Obesity":
+                return "Work with a healthcare provider to create a personalized diet plan. Focus on nutrient-dense foods and monitor portion sizes.";
+        }
+    }
+
+    $dietRecommendations = getDietRecommendations($bmiCategory);
+
+    // Exercise suggestions
+    function getExerciseSuggestions($bmiCategory) {
+        switch ($bmiCategory) {
+            case "Underweight":
+                return "Incorporate strength training exercises to build muscle mass. Ensure adequate rest and recovery.";
+            case "Normal weight":
+                return "Maintain a mix of cardiovascular exercises and strength training. Aim for at least 150 minutes of moderate exercise per week.";
+            case "Overweight":
+                return "Focus on low-impact exercises like walking, swimming, or cycling. Gradually increase intensity and duration.";
+            case "Obesity":
+                return "Start with low-impact activities and gradually increase intensity. Consult a healthcare provider for a safe exercise plan.";
+        }
+    }
+
+    $exerciseSuggestions = getExerciseSuggestions($bmiCategory);
+
+    // Ask for age and gender
+    $age = isset($_POST['age']) ? $_POST['age'] : 25; // Default age
+    $gender = isset($_POST['gender']) ? $_POST['gender'] : 'male'; // Default gender
+
+    // Estimate daily caloric needs using Harris-Benedict equation
+    function calculateCaloricNeeds($weight, $height, $age, $gender) {
+        if ($gender == 'male') {
+            return 88.362 + (13.397 * $weight) + (4.799 * $height) - (5.677 * $age);
+        } else {
+            return 447.593 + (9.247 * $weight) + (3.098 * $height) - (4.330 * $age);
+        }
+    }
+
+    $caloricNeeds = calculateCaloricNeeds($user['weight'], $user['height'], $age, $gender);
+    ?>
+
+    <!-- Navigation Bar -->
+    <div class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Healthy Eating</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="userPage.php">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-</div>
 
-		
-
-	<header class="top-navbar">
-		<nav class="navbar">
-			<a class="nav-link" href="index.php" title="Home">Home</a>
-			<a class="nav-link" href="about-us.html" title="About us">About us</a>
-			<a class="nav-link" href="why-healthy-meal.html" title="Why Healthy Meal">Why Healthy Meal</a>
-			<a class="nav-link" href="healthy-food.html" title="Healthy Food">Healthy Food</a>
-			<a class="nav-link" href="contact.php" title="Contact">Contact</a>
-			<a class="nav-link" href="about-your-body.html" title="About Your Body">About Your Body</a>
-			<div class="nav-right">
-				<a class="nav-link-admin" href="loginPage.php" title="Login">Login</a>
-				<a class="nav-link-admin">|</a>
-				<a class="nav-link-admin" href="registerPage.php" title="Register">Register</a>
-			</div>
-		</nav>
-	</header>
-
-
-
-	<!-- Start slides -->
-	<div id="slides" class="cover-slides">
-		<ul class="slides-container">
-			<li class="text-left">
-				<img src="images/slide-image-1.jpg" alt="">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Healthy Eating</strong></h1>
-							<p class="m-b-40">Healthy food does not have merely one but numerous
-								benefits. <br> It helps us in various spheres of life. Healthy food does not<br>
-								only impact our physical health but mental health too.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="about.html">Read More</a></p>
-						</div>
-					</div>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+			<button id="toggleButton" class="btn btn-secondary">Show Email and Session ID</button>
+				<div id="emailSessionInfo" style="display: none;">
+				    <h2>Email: <?php echo $_SESSION['useremail']; echo "<br>Session ID: ".session_id();?>!</h2>
 				</div>
-			</li>
-			<li class="text-left">
-				<img src="images/slide-image-2.jpg" alt="">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Healthy Eating</strong></h1>
-							<p class="m-b-40">We exist to connect locals to each other through <br>
-								great tasting dishes while also supporting <br>  local farmers and utilizing the freshest ingredients.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="about.html">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="text-left">
-				<img src="images/slide-image-3.jpg" alt="">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Healthy Eating </strong></h1>
-							<p class="m-b-40">Our values include providing fair wages for workers, <br>
-								giving back to the communities we work with, <br>  and serving great dishes with apetizers.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="about.html">Read More</a></p>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-		<div class="slides-navigation">
-			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-		</div>
-	</div>
-<!-- End slides -->
+				<script>
+				    document.addEventListener('DOMContentLoaded', function() {
+				        var infoDiv = document.getElementById('emailSessionInfo');
+				        infoDiv.style.display = 'none';
+				    });
 
+				    document.getElementById('toggleButton').addEventListener('click', function() {
+				        var infoDiv = document.getElementById('emailSessionInfo');
+				        if (infoDiv.style.display === 'none') {
+				            infoDiv.style.display = 'block';
+				            this.textContent = 'Hide Email and Session ID';
+				        } else {
+				            infoDiv.style.display = 'none';
+				            this.textContent = 'Show Email and Session ID';
+				        }
+				    });
+				</script>
+                <h1 class="welcome-message">Welcome, <?php echo htmlspecialchars($user['name']); ?>!</h1>
+                <p>Your BMI is: <?php echo number_format($bmi, 2); ?> (<?php echo $bmiCategory; ?>)</p>
+                <p><?php echo $bmiCategoryInfo; ?></p>
+                <h2>Next Steps</h2>
+                <p><?php echo $nextSteps; ?></p>
+                <h2>Diet Recommendations</h2>
+                <p><?php echo $dietRecommendations; ?></p>
+                <h2>Exercise Suggestions</h2>
+                <p><?php echo $exerciseSuggestions; ?></p>
+                <h2>Estimated Daily Caloric Needs</h2>
+                <p>Your estimated daily caloric needs are: <?php echo number_format($caloricNeeds, 2); ?> calories.</p>
 
+                <!-- Form for Age and Gender -->
+                <form method="post" action="">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" value="<?php echo htmlspecialchars($age); ?>" required>
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male" <?php if ($gender == 'male') echo 'selected'; ?>>Male</option>
+                        <option value="female" <?php if ($gender == 'female') echo 'selected'; ?>>Female</option>
+                    </select>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
 
-
-<!-- Start About -->
-	<div class="about-section-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
-					<div class="inner-column">
-						<h1>Welcome To <span>Healthy Eating</span></h1>
-
-						<p>Healthy eating means eating a variety of foods that give us the nutrients we need to maintain our health, feel good, and have energy.
-							These nutrients include protein, carbohydrates, fat, water, vitamins, and minerals. Nutrition is important for everyone. When combined with
-							 being physically active and maintaining a healthy weight, eating well is an excellent way to help our body stay strong and healthy.
-							 What we eat can affect our immune system, our mood, and our energy level.	</p>
-
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<img src="images/about-image.jpg" alt="" class="img-fluid">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End About -->
-
-
-
-	<!-- Start QT -->
-	<div class="qt-box qt-background">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 ml-auto mr-auto text-center">
-					<p class="lead ">
-						"Your diet is a bank account. Good food choices are good investments."
-					</p>
-					<span class="lead">- Bethenny Frankel</span>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- End QT -->
-
-
-
-<!-- Start Customer Reviews -->
-	<div class="customer-reviews-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="heading-title text-center">
-						<h2>Visitors' Feedbacks</h2>
-						<p>When the online review system was introduced, websites and other businesses as well improved their quality and service in order to gain more positive feedbacks from guests & visitors. </p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-8 mr-auto ml-auto text-center">
-					<div id="reviews" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner mt-4">
-							<div class="carousel-item text-center active">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paul Mitchel</strong></h5>
-								<h6 class="text-dark m-0">Software Developer</h6>
-								<p class="m-0 pt-3">This website has left the best impressions! Hospitable hosts, delicious dishes, beautiful presentation, wide wine list and wonderful dessert. I recommend to everyone! I would like to visit here again and again to know about the healthy diet.</p>
-							</div>
-							<div class="carousel-item text-center">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Steve Fonsi</strong></h5>
-								<h6 class="text-dark m-0">Dentist</h6>
-								<p class="m-0 pt-3">It's a great experience. The ambiance is very welcoming and charming. Amazing wines, food and service. Staff are extremely knowledgeable and make great recommendations.</p>
-							</div>
-							<div class="carousel-item text-center">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Daniel Vebar</strong></h5>
-								<h6 class="text-dark m-0">Businessperson</h6>
-								<p class="m-0 pt-3">Do yourself a favor and visit this lovely restaurant in KL. The service is unmatched. The staff truly cares about your experience. The food is absolutely amazing – everything we tasted melted in other mouths. Absolutely the best meal we had while in KL. Highly recommended!</p>
-							</div>
-						</div>
-						<a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
-							<i class="fa fa-angle-left" aria-hidden="true"></i>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
-							<i class="fa fa-angle-right" aria-hidden="true"></i>
-							<span class="sr-only">Next</span>
-						</a>
-          </div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- End Customer Reviews -->
-
-
-
-<!-- Start Contact info -->
-	<div class="contact-imfo-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 arrow-right">
-					<i class="fa fa-volume-control-phone"></i>
-					<div class="overflow-hidden">
-						<h4>Phone</h4>
-						<p class="lead">
-							016-5748329
-						</p>
-					</div>
-				</div>
-				<div class="col-md-4 arrow-right">
-					<i class="fa fa-envelope"></i>
-					<div class="overflow-hidden">
-						<h4>Email</h4>
-						<p class="lead">
-							healthyeating@gmail.com
-						</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<i class="fa fa-map-marker"></i>
-					<div class="overflow-hidden">
-						<h4>Location</h4>
-						<p class="lead">No. 244 MyTown, Cheras
-
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- End Contact info -->
-
-
-
-<!-- Start Footer -->
-	<footer class="footer-area bg-f">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-lg-3 col-md-6">
-					<h3>Subscribe</h3>
-					<div class="subscribe_form">
-						<form class="subscribe_form">
-							<input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
-							<button type="submit" class="submit">SUBSCRIBE</button>
-							<div class="clearfix"></div>
-						</form>
-					</div>
-					<ul class="list-inline f-social">
-						<li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Contact information</h3>
-					<p class="lead">No. 244 MyTown, Cheras</p>
-					<p class="lead"><a href="#">016-5748329</a></p>
-					<p><a href="#"> healthyeating@gmail.com</a></p>
-				</div>
-
-				<div class="col-lg-3 col-md-6">
-					<h3>View Location</h3>
-					<iframe
-								src="https://www.google.com/maps/d/u/0/embed?mid=1-aIi4m5sw8rbeP_mxuF87y89i88&hl=en&ie=UTF8&msa=0&ll=42.18770180657599%2C-88.12961999999999&spn=0.062833%2C0.041971&output=embed&z=13"
-								width="400" height="250" style="border:2px;" allowfullscreen="" loading="lazy"></iframe>
-				</div>
-			</div>
-		</div>
-
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<p class="company-name">All Rights Reserved. &copy; 2022 <a href="#">Group 6,</a> Design By :
-					<a href="">Group 6</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</footer>
-<!-- End Footer -->
-
-
-
-
-	<a href="#" id="back-to-top" title="Back to top" style="display: none;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
-
-
-
-<!-- ALL JS FILES -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-		<script src="js/jquery.superslides.min.js"></script>
-		<script src="js/images-loded.min.js"></script>
-    <script src="js/custom.js"></script>
-
-
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
