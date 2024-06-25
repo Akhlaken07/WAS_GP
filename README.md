@@ -62,5 +62,14 @@ Healthy Eating Website which promotes a healthy lifestyle and implements securit
       |   | Create our own error message to inform user either it submited or an error occured   |
       |   | Deleted unnecessary input to reduce the pontential number of vulnerabilities |
 
+8. XXS and CSRF Prevention, Implement regex for user input on client side, server side and javascript to validate user input. 
+    - ### XXS and CSRF Prevention [Saufi]
+      | Original  | Enhanced |
+      | ------------- | ------------- |
+      | Input not been sanitize  | Sanitize the input to prevent any spesial symbol to be used for xxs and csrf |
+      |   | Using post method for form   |
+      |  Csp not implement | Implement Content Security Policy to restrict the resource that a page can load to mitigate xxs and csrf |
+      |  Csrf Not implement| Implement Csrf token prevent unauthorized commands from being transmitted  |
+
 ## References
 1. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
