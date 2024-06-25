@@ -53,6 +53,14 @@ Healthy Eating Website which promotes a healthy lifestyle and implements securit
 
 6. **URL Security** [Qoys]
     - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
+  
+7. For Input Validation, Implement regex for user input on client side, server side and javascript to validate user input. 
+    - ### Input Validation [Saufi]
+      | Original  | Enhanced |
+      | ------------- | ------------- |
+      | No validation for user input   | Create a regex pattern for contact form and register form |
+      |   | Create our own error message to inform user either it submited or an error occured   |
+      |   | Deleted unnecessary input to reduce the pontential number of vulnerabilities |
 
 ## References
 1. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
