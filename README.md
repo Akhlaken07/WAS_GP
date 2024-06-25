@@ -12,17 +12,16 @@ AWASP
 Healthy Eating
 
 ## Introduction
-Healthy Eating Website which promote healthy lifestyle that have been implement a security in multiple area. 
-
+Healthy Eating Website which promotes a healthy lifestyle and implements security in multiple areas.
 
 ## Objectives
 1. To secure the database of users with proper authentication and authorization
-2. Preventing Cross Site Scripting and Cross Site Forgery with proper implementation
+2. Preventing Cross Site Scripting and Cross Site Request Forgery with proper implementation
 3. Implementing REGEX and Sanitization 
 4. ??
 5. ??
 6. ??
-      
+
 ## Web Application Security Enhancements
 
 1. For Authentication, a login with two factor authentication have been added before admin can access the database
@@ -43,13 +42,17 @@ Healthy Eating Website which promote healthy lifestyle that have been implement 
    
 
 
-3. Added logout.php which will destroy sessions when the user click the logout button [azhad]
+3. **Session Management** [Azhad]
+    - Added a logout feature that destroys sessions when the user clicks the logout button.
 
-4. Included database with db_connect.php with custom username & password [qoys]
+4. **Database Security** [Qoys]
+    - Included a database connection with custom username and password.
 
-5. Disable file directory by removing 'Indexes' in httpd.conf (Options Indexes FollowSymLinks Includes ExecCGI) [qoys]
+5. **Server Configuration** [Qoys]
+    - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
 
-6. Shortened the URL is being implemented by creating .htacces file in htdocs to prevent any URL rewriting which can lead the attackers to make any changes to the folders. [qoys]
+6. **URL Security** [Qoys]
+    - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
 
 ## References
 1. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
