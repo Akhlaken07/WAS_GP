@@ -42,5 +42,14 @@ Healthy Eating Website which promote healthy lifestyle that have been implement 
       |   | XSS prevention with REGEX   |
    
 
+
+3. Added logout.php which will destroy sessions when the user click the logout button [azhad]
+
+4. Included database with db_connect.php with custom username & password [qoys]
+
+5. Disable file directory by removing 'Indexes' in httpd.conf (Options Indexes FollowSymLinks Includes ExecCGI) [qoys]
+
+6. Shortened the URL is being implemented by creating .htacces file in htdocs to prevent any URL rewriting which can lead the attackers to make any changes to the folders. [qoys]
+
 ## References
 1. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
