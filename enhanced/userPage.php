@@ -16,7 +16,8 @@
 <?php
 
 require 'sessionCheck.php';
-header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com; script-src 'self' 'unsafe-inline'");
+header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://ka-f.fontawesome.com ");
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }

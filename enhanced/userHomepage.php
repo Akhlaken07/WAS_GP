@@ -61,7 +61,7 @@
     }
 
     // Set Content Security Policy
-    header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com; script-src 'self' 'unsafe-inline'");
+    header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://ka-f.fontawesome.com ");
 
     // Get the user's details from the database
     $sql = "SELECT name, height, weight, homeAddress, email, countryCodeMobile, mobilePhone FROM Userdetails WHERE email = ?";

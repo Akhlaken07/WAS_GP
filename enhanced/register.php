@@ -8,15 +8,13 @@ require 'db_connect.php';
 
 
 
-// $currentAddress = $_POST['currentAddress'];
 $homeAddress = $_POST['homeAddress'];
 $email = $_POST['email'];
 $countryCodeMobile = $_POST['countryCodeMobile'];
 $mobilePhone = $_POST['mobilePhone'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
-// $countryCodeHome = $_POST['countryCodeHome'];
-// $homePhone = $_POST['homePhone'];
+
 
 // Check if "Users" table exists, if not, create it
 $sql = "CREATE TABLE IF NOT EXISTS Users (

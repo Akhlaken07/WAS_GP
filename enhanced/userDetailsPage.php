@@ -1,7 +1,7 @@
 <?php
  
 require 'sessionCheck.php';
-header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com; script-src 'self' 'unsafe-inline'");
+header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://ka-f.fontawesome.com ");
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,30 @@ header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapc
 <head>
     <title>User Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e4e4e4; /* Dark grey background */
+        }
+        h1, .alert {
+            background-color: #ffeb3b; /* Yellow background */
+            color: #343a40; /* Dark grey text */
+        }
+        .btn-primary {
+            background-color: #ffeb3b; /* Yellow background */
+            color: #343a40; /* Dark grey text */
+            border-color: #ffeb3b;
+        }
+        .btn-primary:hover {
+            background-color: #fdd835; /* Darker yellow on hover */
+            border-color: #fdd835;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #e9ecef; /* Light grey for odd rows */
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #f8f9fa; /* Lighter grey for even rows */
+        }
+    </style>
 </head>
 <body>
     <div class="container">

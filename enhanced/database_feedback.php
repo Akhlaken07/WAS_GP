@@ -29,15 +29,14 @@
             die('Connection Failed : ' . $conn->connect_error);
         }
 
-        $sql = "SELECT id, name, mail, phone, address, message FROM feedback";
+        $sql = "SELECT  name, mail, phone, address, message FROM feedback";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             echo "<table border='1' align='center'>";
-            echo "<tr><th>ID</th><th>Name</th><th>Mail</th><th>Phone</th><th>Address</th><th>Message</th></tr>";
+            echo "<tr><th>Name</th><th>Mail</th><th>Phone</th><th>Address</th><th>Message</th></tr>";
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['id']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['mail']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['phone']) . "</td>";

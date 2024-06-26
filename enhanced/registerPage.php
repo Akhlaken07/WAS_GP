@@ -54,6 +54,12 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     </style>
 </head>
 <body>
+<div class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="userHomepage.php">Healthy Eating</a>
+            
+        </nav>
+    </div>
      <div class="container h-100">
     <h1 class="text-center mb-4">Register</h1>
             <div class="row justify-content-center">
