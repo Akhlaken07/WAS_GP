@@ -1,4 +1,7 @@
 <?php
+
+header("Content-Security-Policy: default-src 'self' https://stackpath.bootstrapcdn.com  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://ka-f.fontawesome.com ");
+
 $conn = new mysqli('localhost', 'root', '', 'healthywebsite');
 if ($conn->connect_error) {
     die('Connection Failed : ' . $conn->connect_error);
