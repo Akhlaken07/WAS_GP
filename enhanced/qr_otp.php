@@ -24,13 +24,13 @@ if (isset($_POST['otp-submit'])){
     <title>Document</title>
 </head>
 <body>
-    <h1>Two Factor Authentication</h1><br>
+    <center><h1>Two Factor Authentication</h1></center><br>
     <center><img src="<?=$link?>"></center><br>
     <center><h3>Scan the QR code to get the OTP</h3></center><br>
     <!-- Start of the form -->
     <form id="otp" action="" method="POST">
-        <center><input type="text" name="pass-code" required></center><br>
-        <center><input type="submit" name="otp-submit" value="Submit"></center>
+    <center><input type="text" name="pass-code" pattern="^\d+$" title="Please enter numbers only." required></center><br>
+    <center><input type="submit" name="otp-submit" value="Submit"></center>
     </form>
 </body>
 </html>
