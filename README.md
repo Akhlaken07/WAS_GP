@@ -54,21 +54,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Added users role where they can see their profile and bmi calculation  |
       |   | XSS prevention with REGEX   |
    
-
-
-3. **Session Management** [Azhad]
-    - Added a logout feature that destroys sessions when the user clicks the logout button.
-
-4. **Database Security** [Qoys]
-    - Included a database connection with custom username and password.
-
-5. **Server Configuration** [Qoys]
-    - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
-
-6. **URL Security** [Qoys]
-    - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
-  
-7. For Input Validation, Implement regex for user input on client side, server side and javascript to validate user input. 
+3. For Input Validation, Implement regex for user input on client side, server side and javascript to validate user input. 
     - ### Input Validation [Saufi]
       | Original  | Enhanced |
       | ------------- | ------------- |
@@ -76,7 +62,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Create our own error message to inform user either it submited or an error occured   |
       |   | Deleted unnecessary input to reduce the pontential number of vulnerabilities |
 
-8. XXS and CSRF Prevention, Implement regex for user input on client side, server side and javascript to validate user input. 
+4. XXS and CSRF Prevention, Implement regex for user input on client side, server side and javascript to validate user input. 
     - ### XXS and CSRF Prevention [Saufi]
       | Original  | Enhanced |
       | ------------- | ------------- |
@@ -84,6 +70,20 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Using post method for form   |
       |  Csp not implement | Implement Content Security Policy to restrict the resource that a page can load to mitigate xxs and csrf |
       |  Csrf Not implement| Implement Csrf token prevent unauthorized commands from being transmitted  |
+
+5. **Session Management** [Azhad]
+    - Added a logout feature that destroys sessions when the user clicks the logout button.
+
+6. **Database Security** [Qoys]
+    - Included a database connection with custom username and password.
+
+7. **Server Configuration** [Qoys]
+    - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
+
+8. **URL Security** [Qoys]
+    - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
+  
+
 
 ## References
 1. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
