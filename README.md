@@ -75,29 +75,25 @@ The authors of the file additions/enhancements are encased in square brackets as
     - ### [userHomepage.php](enhanced/userHomepage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
-      | No Content Security Policy | Added CSP header to restrict resources (line 24) |
-      | No session check | Added session check to ensure user is logged in (line 18) |
-      | No BMI calculation | Added BMI calculation and personalized recommendations (lines 36-108) |
-      | No email and session ID display | Added toggle button to show/hide email and session ID (lines 144-162) |
+      | No Content Security Policy | Added CSP header to restrict resources (line 64) |
+      | No session check | Added session check to ensure user is logged in (line 59) |
+    
 
 6. **User Page** [Qoys]
     - ### [userPage.php](enhanced/userPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
-      | No Content Security Policy | Added CSP header to restrict resources (line 10) |
-      | No CSRF protection | Added CSRF token generation and validation (lines 14, 22, 28) |
-      | No session check | Added session check to ensure user is logged in (line 18) |
-      | No email and session ID display | Added toggle button to show/hide email and session ID (lines 52-70) |
-      | No user details update | Added form to update user details with CSRF protection (lines 72-128) |
+      | No Content Security Policy | Added CSP header to restrict resources (line 19) |
+      | No CSRF protection | Added CSRF token generation and validation (lines 22 & 33) |
+      | No session check | Added session check to ensure user is logged in (line 27) |
+      | No user details update | Added form to update user details with CSRF protection (lines 111) |
 
 7. **User Details Page** [Qoys]
     - ### [userDetailsPage.php](enhanced/userDetailsPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
       | No Content Security Policy | Added CSP header to restrict resources (line 4) |
-      | No session check | Added session check to ensure user is logged in (line 3) |
-      | No email and session ID display | Added display of email and session ID (line 20) |
-      | No user details table | Added table to display user details (lines 28-36) |
+      | No user details table | Added table to display user details (lines 40) |
 
 8. **Database Connection** [Qoys]
     - ### [db_connect.php](enhanced/db_connect.php)
@@ -106,13 +102,13 @@ The authors of the file additions/enhancements are encased in square brackets as
       | No database connection | Added database connection with custom username and password (lines 2-12) |
 
 9. **Edit User** [Qoys]
-    - ### [editUser.php](enhanced/editUser.php)
+    - ### [editUserPage.php](enhanced/editUserPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
-      | No CSRF protection | Added CSRF token validation (line 3) |
-      | No session check | Added session check to ensure user is logged in (line 2) |
+      | No CSRF protection | Added CSRF token generation (line 5) |
+      | No session check | Added session check to ensure user is logged in (line 3) |
       | No form data validation | Added form data validation and update logic (lines 8-30) |
-      | No redirection | Added redirection based on user role after update (lines 22-25) |
+
 
 10. **Session Management** [Azhad]
     - Added a logout feature that destroys sessions when the user clicks the logout button.
