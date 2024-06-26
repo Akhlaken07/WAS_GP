@@ -118,10 +118,13 @@ The authors of the file additions/enhancements are encased in square brackets as
 
 12. **Server Configuration** [Qoys]
     - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
+      ![image](https://github.com/Akhlaken07/WAS_GP/assets/96472091/20ad1767-2079-4129-9dd1-30bcdb61397c)
+
 
 13. **URL Security** [Qoys]
     - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
   
+![image](https://github.com/Akhlaken07/WAS_GP/assets/96472091/4ae42b89-6d5e-422f-970d-898887b60ea6)
 
 
 ## References
