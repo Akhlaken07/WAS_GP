@@ -24,7 +24,7 @@ if (isset($_POST['otp-submit'])){
     <title>Document</title>
 </head>
 <body>
-    <h1>Two Factor Authenticator using Google Authenticator</h1><br>
+    <h1>Two Factor Authentication</h1><br>
     <center><img src="<?=$link?>"></center><br>
     <center><h3>Scan the QR code to get the OTP</h3></center><br>
     <!-- Start of the form -->
