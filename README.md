@@ -118,6 +118,7 @@ The authors of the file additions/enhancements are encased in square brackets as
 
 12. **Server Configuration** [Qoys]
     - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
+    - 
       ![image](https://github.com/Akhlaken07/WAS_GP/assets/96472091/20ad1767-2079-4129-9dd1-30bcdb61397c)
 
 
