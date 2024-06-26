@@ -57,7 +57,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Added session check in this layer   |
    
 3. For Input Validation, Implement regex for user input on client side, server side and javascript to validate user input. 
-    - ### Input Validation [Saufi]
+    - ### Input Validation [Saufi] [contact.php](enhanced/contact.php) [regex.js](enhanced/js/regex.js)
       | Original  | Enhanced |
       | ------------- | ------------- |
       | No validation for user input   | Create a regex pattern for contact form and register form |
@@ -65,7 +65,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Deleted unnecessary input to reduce the pontential number of vulnerabilities |
 
 4. XXS and CSRF Prevention, Implement regex for user input on client side, server side and javascript to validate user input. 
-    - ### XXS and CSRF Prevention [Saufi]
+    - ### XXS and CSRF Prevention [Saufi] [register.php](enhanced/register.php) [registerPage.php](enhanced/registerPage.php) [csrf_verify.php](enhanced/csrf_verify.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
       | Input not been sanitize  | Sanitize the input to prevent any spesial symbol to be used for xxs and csrf |
