@@ -14,13 +14,14 @@ Healthy Eating
 ## Introduction
 Healthy Eating Website which promotes a healthy lifestyle and implements security in multiple areas.
 
+
 ## Objectives
-1. To secure the database of users with proper authentication and authorization
-2. Preventing Cross Site Scripting and Cross Site Request Forgery with proper implementation
-3. Implementing REGEX and Sanitization 
-4. ??
-5. ??
-6. ??
+1. To authenticate and authorize valid user that access theirhealth information through the website.
+2. To prevent unauthorize access by implementing session management.
+3. To implement Regex and input validation to prevent SQL injection and XSS in the text box especially in the login and register page.
+4. File directory cannot be accessed by unauthorize user since it has been disabled.
+5. To prevent CSRF by implementing Anti-CSRF token and secure session management.
+6. To create a safer environment for the user to access and use the website.
 
 ## Web Application Security Enhancements
 
