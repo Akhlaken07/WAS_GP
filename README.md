@@ -71,19 +71,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |  Csp not implement | Implement Content Security Policy to restrict the resource that a page can load to mitigate xxs and csrf |
       |  Csrf Not implement| Implement Csrf token prevent unauthorized commands from being transmitted  |
 
-5. **Session Management** [Azhad]
-    - Added a logout feature that destroys sessions when the user clicks the logout button.
-
-6. **Database Security** [Qoys]
-    - Included a database connection with custom username and password.
-
-7. **Server Configuration** [Qoys]
-    - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
-
-8. **URL Security** [Qoys]
-    - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
-  
-9. **User Homepage** [Qoys]
+5. **User Homepage** [Qoys]
     - ### [userHomepage.php](enhanced/userHomepage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
@@ -92,7 +80,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       | No BMI calculation | Added BMI calculation and personalized recommendations (lines 36-108) |
       | No email and session ID display | Added toggle button to show/hide email and session ID (lines 144-162) |
 
-10. **User Page** [Qoys]
+6. **User Page** [Qoys]
     - ### [userPage.php](enhanced/userPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
@@ -102,7 +90,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       | No email and session ID display | Added toggle button to show/hide email and session ID (lines 52-70) |
       | No user details update | Added form to update user details with CSRF protection (lines 72-128) |
 
-11. **User Details Page** [Qoys]
+7. **User Details Page** [Qoys]
     - ### [userDetailsPage.php](enhanced/userDetailsPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
@@ -111,13 +99,13 @@ The authors of the file additions/enhancements are encased in square brackets as
       | No email and session ID display | Added display of email and session ID (line 20) |
       | No user details table | Added table to display user details (lines 28-36) |
 
-12. **Database Connection** [Qoys]
+8. **Database Connection** [Qoys]
     - ### [db_connect.php](enhanced/db_connect.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
       | No database connection | Added database connection with custom username and password (lines 2-12) |
 
-13. **Edit User** [Qoys]
+9. **Edit User** [Qoys]
     - ### [editUser.php](enhanced/editUser.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
@@ -125,6 +113,19 @@ The authors of the file additions/enhancements are encased in square brackets as
       | No session check | Added session check to ensure user is logged in (line 2) |
       | No form data validation | Added form data validation and update logic (lines 8-30) |
       | No redirection | Added redirection based on user role after update (lines 22-25) |
+
+10. **Session Management** [Azhad]
+    - Added a logout feature that destroys sessions when the user clicks the logout button.
+
+11. **Database Security** [Qoys]
+    - Included a database connection with custom username and password.
+
+12. **Server Configuration** [Qoys]
+    - Disabled file directory listing by removing 'Indexes' in `httpd.conf` (Options ~~Indexes~~ FollowSymLinks Includes ExecCGI).
+
+13. **URL Security** [Qoys]
+    - Implemented URL shortening by creating an `.htaccess` file in `htdocs` to prevent URL rewriting, which can lead to unauthorized changes to the folders.
+  
 
 
 ## References
