@@ -23,6 +23,19 @@ Healthy Eating Website which promotes a healthy lifestyle and implements securit
 5. To prevent CSRF by implementing Anti-CSRF token and secure session management.
 6. To create a safer environment for the user to access and use the website.
 
+## Task Distribution 
+| Enhancement | Assigned |
+| ------------- | ------------- |
+| Authentication & Authorization | Azhad |
+| XSS and CSRF prevention & Input validation | Saufi |
+| Database security principles & File security principle | Qoys |
+
+## Enhancement
+The authors of the file additions/enhancements are encased in square brackets as such: 
+- [azhad] refers to [Muhammad Azhad bin Muhammad Nasim](https://github.com/Akhlaken07)
+- [saufi] refers to [Saufi bin Azmi](https://github.com/SaufiAzmi)
+- [qoys] refers to [Qoys Al Hanif bin Jaafar](https://github.com/QHanif)
+
 ## Web Application Security Enhancements
 
 1. For Authentication, a login with two factor authentication have been added before admin can access the database
