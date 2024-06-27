@@ -131,4 +131,7 @@ The authors of the file additions/enhancements are encased in square brackets as
 
 
 ## References
-1. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
+1. https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+2. https://infosec.mozilla.org/guidelines/web_security
+3. https://cheatsheetseries.owasp.org/cheatsheets
+4. Webappsec class handouts from our course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
