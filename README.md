@@ -57,7 +57,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Added session check in this layer   |
    
 3. For Input Validation, Implement regex for user input on client side, server side and javascript to validate user input. 
-    - ### Input Validation [Saufi] [contact.php](enhanced/contact.php) [regex.js](enhanced/js/regex.js [register.php](enhanced/register.php) [registerPage.php](enhanced/registerPage.php)
+    - ### Input Validation [Saufi] [contact.php](enhanced/contact.php) [regex.js](enhanced/js/regex.js) [register.php](enhanced/register.php) [registerPage.php](enhanced/registerPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
       | No validation for user input   | Create a regex pattern for contact form and register form |
