@@ -39,16 +39,16 @@ The authors of the file additions/enhancements are encased in square brackets as
 ## Web Application Security Enhancements
 
 1. For Authentication, a login with two factor authentication have been added before admin can access the database
-    - ### Authentication [Azhad]
+    - ### Authentication [Azhad] [login.php](enhanced/login.php) [loginPage.php](enhanced/loginPage.php) [register.php](enhanced/register.php) [registerPage.php](enhanced/registerPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
-      | No login.php   | Added a login page where username and password need to be enter |
+      | No login.php   | Added a login and register page where username and password need to be enter |
       |   | After username and password has been entered, admin need to scan a QR code with OTP number to access the database  |
-      |   | XSS prevention with REGEX   |
+      |   | XSS prevention with REGEX at login page  |
       |   | Added session check in this layer   |
       
 2. For Authorization, it will show the different when a user and admin login
-    - ### Authorization [Azhad]
+    - ### Authorization [Azhad] [qr_otp.php](enhanced/qr_otp.php) 
       | Original  | Enhanced |
       | ------------- | ------------- |
       | No user and admin   | Added a admin role where they can see the feedback and users data  |
@@ -57,7 +57,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       |   | Added session check in this layer   |
    
 3. For Input Validation, Implement regex for user input on client side, server side and javascript to validate user input. 
-    - ### Input Validation [Saufi] [contact.php](enhanced/contact.php) [regex.js](enhanced/js/regex.js)
+    - ### Input Validation [Saufi] [contact.php](enhanced/contact.php) [regex.js](enhanced/js/regex.js [register.php](enhanced/register.php) [registerPage.php](enhanced/registerPage.php)
       | Original  | Enhanced |
       | ------------- | ------------- |
       | No validation for user input   | Create a regex pattern for contact form and register form |
@@ -112,7 +112,7 @@ The authors of the file additions/enhancements are encased in square brackets as
       | No form data validation | Added form data validation and update logic (lines 8-30) |
 
 
-10. **Session Management** [Azhad]
+10. **Session Management** [Azhad] [logout.php](enhanced/logout.js)
     - Added a logout feature that destroys sessions when the user clicks the logout button.
 
 11. **Database Security** [Qoys]
